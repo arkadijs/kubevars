@@ -29,7 +29,7 @@ func main() {
 		formatter = func(vars []api.EnvVar) string {
 			var r []string
 			for _, v := range vars {
-				r = append(r, fmt.Sprintf("-e %s=\"%v\"", v.Name, v.Value))
+				r = append(r, fmt.Sprintf("-e %s=%v", v.Name, v.Value))
 			}
 			return strings.Join(r, "\n")
 		}
