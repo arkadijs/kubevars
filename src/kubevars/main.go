@@ -59,7 +59,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	registry := ketcd.NewRegistry(helper, nil)
+	registry := ketcd.NewRegistry(helper, nil, nil)
 	services, err := registry.ListServices(api.NewContext())
 	if err != nil {
 		log.Fatal(err)
