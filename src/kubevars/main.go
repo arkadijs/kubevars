@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/GoogleCloudPlatform/kubernetes/pkg/api"
-	"github.com/GoogleCloudPlatform/kubernetes/pkg/kubelet/envvars"
-	"github.com/GoogleCloudPlatform/kubernetes/pkg/master"
-	ketcd "github.com/GoogleCloudPlatform/kubernetes/pkg/registry/etcd"
+	"k8s.io/kubernetes/pkg/api"
+	"k8s.io/kubernetes/pkg/kubelet/envvars"
+	"k8s.io/kubernetes/pkg/master"
+	ketcd "k8s.io/kubernetes/pkg/registry/etcd"
 	"github.com/coreos/go-etcd/etcd"
 	"log"
 	"os"
@@ -55,7 +55,7 @@ func main() {
 	}
 
 	client := etcd.NewClient([]string{etcdAddress})
-	helper, err := master.NewEtcdHelper(client, "")
+	helper, err := master.NewEtcdHelper(client, "", master.DefaultEtcdPathPrefix)
 	if err != nil {
 		log.Fatal(err)
 	}
